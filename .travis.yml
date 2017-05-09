@@ -9,6 +9,6 @@ script:
   - npm run build
 deploy:
   - provider: firebase
-  - token: $FIREBASE_TOKEN
+    token: $FIREBASE_TOKEN
 # after_success:
 #  - firebase deploy --token $FIREBASE_TOKEN
