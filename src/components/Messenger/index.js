@@ -9,21 +9,18 @@ export default class Messenger extends Component {
 
     constructor() {
       super();
-
       this.state = {
         message: '',
         messages: []
       }
-
       this.handleMessageChange = this.handleMessageChange.bind(this);
       this.handleMessageSend = this.handleMessageSend.bind(this);
     }
 
     componentDidMount() {
-      db.ref('messages').on('value', snapshot => {
+      db.ref('messages').on('value', function(snapshot) {
         let messages = _.values(snapshot.val())
                         .map(obj => ({msg: obj.text, user: obj.user}));
-
         this.setState({messages});
       });
     }
@@ -43,9 +40,7 @@ export default class Messenger extends Component {
 
     handleMessageSend(event) {
       event.preventDefault();
-
       this.writeToDatabase(this.state.message);
-
       this.resetInput();
     }
 

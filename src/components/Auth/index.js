@@ -7,16 +7,13 @@ export default class Auth extends Component {
 
   constructor() {
     super();
-
     this.state = {
-
     };
-
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(function(user){
       if (user) {
         this.props.updateUser(user);
       }
@@ -25,8 +22,7 @@ export default class Auth extends Component {
 
   handleClick() {
     let provider = new firebase.auth.FacebookAuthProvider();
-
-    firebase.auth().signInWithPopup(provider).then(result => {
+    firebase.auth().signInWithPopup(provider).then(function(result){
       let user = result.user;
       this.props.updateUser(user);
     }).catch(function(error) {
