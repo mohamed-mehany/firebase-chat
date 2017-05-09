@@ -1,1 +1,1 @@
-Deployed at: https://fir-chat-2e7c3.firebaseapp.com/
+You can access this app at: https://chat-app-6d984.firebaseapp.com
