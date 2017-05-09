@@ -13,18 +13,20 @@ export default class Auth extends Component {
   }
 
   componentDidMount() {
+    let self = this;
     firebase.auth().onAuthStateChanged(function(user){
       if (user) {
-        this.props.updateUser(user);
+        self.props.updateUser(user);
       }
     });
   }
 
   handleClick() {
+    let self = this;
     let provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result){
       let user = result.user;
-      this.props.updateUser(user);
+      self.props.updateUser(user);
     }).catch(function(error) {
       console.error(error);
     });

@@ -18,10 +18,11 @@ export default class Messenger extends Component {
     }
 
     componentDidMount() {
+      let self = this;
       db.ref('messages').on('value', function(snapshot) {
         let messages = _.values(snapshot.val())
                         .map(obj => ({msg: obj.text, user: obj.user}));
-        this.setState({messages});
+        self.setState({messages});
       });
     }
 
